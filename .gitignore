@@ -8,3 +8,4 @@ src/node_modules
 .idea/
 .settings/
 node_modules
+/public/images

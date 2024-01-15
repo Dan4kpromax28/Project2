@@ -6,7 +6,9 @@
 @endif
 <form
     method="post"
-    action="{{ $car->exists ? '/cars/patch/' . $car->id : '/cars/put' }}">
+    action="{{ $car->exists ? '/cars/patch/' . $car->id : '/cars/put' }}"
+    enctype="multipart/form-data"
+    >
      @csrf
     <div class="mb-3">
         <label for="car-name" class="form-label">Name</label>
@@ -77,6 +79,25 @@
                 <p class="invalid-feedback">{{ $errors->first('price') }}</p>
             @enderror
         </div>
+        <div class="mb-3">
+            <label for="car-image" class="form-label">Image</label>
+             @if ($car->image)
+                <img
+                    src="{{ asset('images/' . $car->image) }}"
+                    class="img-fluid img-thumbnail d-block mb-2"
+                    alt="{{ $car->name }}"
+                >
+            @endif
+            <input
+                type="file" accept="image/png, image/webp, image/jpeg"
+                id="car-image"
+                name="image"
+                class="form-control @error('image') is-invalid @enderror"
+            >
+            @error('image')
+                <p class="invalid-feedback">{{ $errors->first('image') }}</p>
+            @enderror
+        </div>
  
         <div class="mb-3">
             <div class="form-check">
@@ -96,6 +117,9 @@
                 @enderror
             </div>
         </div>
+
+        
+
         <button type="submit" class="btn btn-primary">
             {{ $car->exists ? 'Update' : 'Create' }}
         </button>
