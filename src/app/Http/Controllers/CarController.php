@@ -5,10 +5,12 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Car;
 use App\Models\Author;
+use App\Http\Requests\CarRequest;
 
 
 class CarController extends Controller
 {
+
     public function list()
     {
         $items = Car::orderBy('name', 'asc')->get();
@@ -34,26 +36,11 @@ class CarController extends Controller
             );
     }
 
-
-    public function put(Request $request)
-    {
-        $validatedData = $request->validate([
-            'name' => 'required|min:3|max:256',
-            'author_id' => 'required',
-            'description' => 'nullable',
-            'price' => 'nullable|numeric',
-            'year' => 'numeric',
-            'image' => 'nullable|image',
-            'display' => 'nullable'
-     ]);
-
-     $car = new Car();
-     $car->name = $validatedData['name'];
-     $car->author_id = $validatedData['author_id'];
-     $car->description = $validatedData['description'];
-     $car->price = $validatedData['price'];
-     $car->year = $validatedData['year'];
-     $car->display = (bool) ($validatedData['display'] ?? false);
+    private function saveCarData(Car $car, CarRequest $request){
+        $validatedData = $request->validated();
+     
+        $car->fill($validatedData);
+        $car->display = (bool) ($validatedData['display'] ?? false);
 
     if ($request->hasFile('image')) {
         $uploadedFile = $request->file('image');
@@ -67,7 +54,14 @@ class CarController extends Controller
        }
        
      $car->save();
-     return redirect('/cars');
+    }
+
+
+    public function put(CarRequest $request)
+    {
+        $car = new Car();
+        $this->saveCarData($car, $request);
+        return redirect('/cars');
     }
     
     public function update(Car $car)
@@ -83,37 +77,9 @@ class CarController extends Controller
         );
     }
 
-    public function patch(Car $car, Request $request)
+    public function patch(Car $car, CarRequest $request)
     {
-        $validatedData = $request->validate([
-            'name' => 'required|min:3|max:256',
-            'author_id' => 'required',
-            'description' => 'nullable',
-            'price' => 'nullable|numeric',
-            'year' => 'numeric',
-            'image' => 'nullable|image',
-            'display' => 'nullable'
-        ]);
-        $car->name = $validatedData['name'];
-        $car->author_id = $validatedData['author_id'];
-        $car->description = $validatedData['description'];
-        $car->price = $validatedData['price'];
-        $car->year = $validatedData['year'];
-        $car->display = (bool) ($validatedData['display'] ?? false);
-
-        if ($request->hasFile('image')) {
-            $uploadedFile = $request->file('image');
-            $extension = $uploadedFile->clientExtension();
-            $name = uniqid();
-            $car->image = $uploadedFile->storePubliclyAs(
-            '/',
-            $name . '.' . $extension,
-            'uploads'
-            );
-        }
-           
-        $car->save();
-        
+        $this->saveCarData($car, $request);
         return redirect('/cars/update/' . $car->id);
     }
 
@@ -121,4 +87,5 @@ class CarController extends Controller
         $car->delete();
         return redirect('/cars');
     }
+    
 }

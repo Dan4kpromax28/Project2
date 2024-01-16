@@ -41,7 +41,7 @@ class AuthorController extends Controller
 
         return redirect('authors');
     }
-
+    
     public function update(Author $author){
         return view(
             'author.form',
