@@ -21,12 +21,21 @@ data-bs-target="#navbarNav">
                             <li class="nav-item">
                                 <a class="nav-link" href="/">Home</a>
                             </li>
+                        @if(Auth::check())
                             <li class="nav-item">
                                 <a class="nav-link" href="/authors">Authors</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="/cars">Cars</a>
                             </li>
+                            <li>
+                                <a class="nav-link" href="/logout">Log out</a>
+                            </li>
+                        @else
+                            <li>
+                                <a class="nav-link" href="/login">Log in</a>
+                            </li>
+                        @endif
                         </ul>
                     </div>
                 </div>

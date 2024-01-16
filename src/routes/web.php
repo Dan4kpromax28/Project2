@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AuthorController;
 use App\Http\Controllers\CarController;
-
+use App\Http\Controllers\AuthController;
 
 
 
@@ -24,3 +24,7 @@ Route::post('/cars/put', [CarController::class, 'put']);
 Route::get('/cars/update/{car}', [CarController::class, 'update']);
 Route::post('/cars/patch/{car}', [CarController::class, 'patch']);
 Route::post('/cars/delete/{car}', [CarController::class, 'delete']);
+
+Route::get('/login', [AuthController::class, 'login'])-> name('login');
+Route::get('/logout', [AuthController::class, 'logout']);
+Route::post('/auth', [AuthController::class, 'authenticate']);

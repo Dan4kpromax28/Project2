@@ -11,6 +11,10 @@ use App\Http\Requests\CarRequest;
 class CarController extends Controller
 {
 
+    public function __construct(){
+        $this->middleware('auth');
+    }
+
     public function list()
     {
         $items = Car::orderBy('name', 'asc')->get();
