@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Car;
 use App\Models\Author;
+use App\Models\Driver;
 use App\Http\Requests\CarRequest;
 
 
@@ -29,6 +30,7 @@ class CarController extends Controller
 
     public function create(){
         $authors = Author::orderBy('name','asc')->get();
+        $drivers = Driver::all();
 
         return view(
             'car.form',
@@ -36,6 +38,8 @@ class CarController extends Controller
                 'title' => 'Add car',
                 'car' => new Car(),
                 'authors' => $authors,
+                'drivers' => $drivers,
+                
             ]
             );
     }
@@ -71,12 +75,16 @@ class CarController extends Controller
     public function update(Car $car)
     {
         $authors = Author::orderBy('name', 'asc')->get();
+        $drivers = Driver::all();
+
         return view(
             'car.form',
             [
                 'title' => 'Edit car',
                 'car' => $car,
                 'authors' => $authors,
+                'drivers' => $drivers,
+                
             ]
         );
     }

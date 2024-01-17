@@ -27,6 +27,9 @@ data-bs-target="#navbarNav">
                                 <a class="nav-link" href="/authors">Authors</a>
                             </li>
                             <li class="nav-item">
+                                <a class="nav-link" href="/drivers">Drivers</a>
+                            </li>
+                            <li class="nav-item">
                                 <a class="nav-link" href="/cars">Cars</a>
                             </li>
                             <li>

@@ -19,6 +19,7 @@ class CarRequest extends FormRequest
         return [
             'name' => 'required|min:3|max:256',
             'author_id' => 'required',
+            'driver_id' => 'required',
             'description' => 'nullable',
             'price' => 'nullable|numeric',
             'year' => 'numeric',
@@ -43,6 +44,7 @@ class CarRequest extends FormRequest
         return [
             'name' => 'nosaukums',
             'author_id' => 'autors',
+            'driver_id' => 'drivers',
             'description' => 'apraksts',
             'price' => 'cena',
             'year' => 'gads',

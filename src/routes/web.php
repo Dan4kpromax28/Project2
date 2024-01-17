@@ -5,7 +5,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AuthorController;
 use App\Http\Controllers\CarController;
 use App\Http\Controllers\AuthController;
-
+use App\Http\Controllers\DriverController;
 
 
 
@@ -28,3 +28,11 @@ Route::post('/cars/delete/{car}', [CarController::class, 'delete']);
 Route::get('/login', [AuthController::class, 'login'])-> name('login');
 Route::get('/logout', [AuthController::class, 'logout']);
 Route::post('/auth', [AuthController::class, 'authenticate']);
+
+Route::get('/drivers', [DriverController::class, 'list']);
+Route::get('/drivers/create', [DriverController::class, 'create']);
+Route::post('/drivers/put', [DriverController::class, 'put']);
+Route::get('/drivers/update/{driver}', [DriverController::class, 'update']);
+Route::post('/drivers/patch/{driver}', [DriverController::class, 'patch']);
+Route::post('/drivers/delete/{driver}', [DriverController::class, 'delete']);
+

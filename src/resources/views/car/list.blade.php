@@ -6,8 +6,10 @@
         <thead class="thead-light">
             <tr>
                 <th>ID</th>
-                <th>Name</th>
-                <th>Author</th>
+                <th>Model</th>
+                <th>Team</th>
+                <th>Driver</th>
+                <th>Car Number</th>
                 <th>Year</th>
                 <th>Price</th>
                 <th>Published</th>
@@ -20,6 +22,8 @@
                 <td>{{ $car->id }}</td>
                 <td>{{ $car->name }}</td>
                 <td>{{ $car->author->name }}</td>
+                <td>{{ $car->driver->name }}</td>
+                <td>{{ $car->driver->id }}</td>
                 <td>{{ $car->year }}</td>
                 <td>&euro; {{ number_format($car->price, 2, '.') }}</td>
                 <td>{!! $car->display ? '&#x2714;' : '&#x274C;' !!}</td>

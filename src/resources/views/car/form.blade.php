@@ -42,6 +42,24 @@
             @enderror
         </div>
         <div class="mb-3">
+            <label for="car-driver" class="form-label">Author</label>
+            <select
+                id="car-driver"
+                name="driver_id"
+                class="form-select @error('driver_id') is-invalid @enderror"
+            >
+            <option value="">Choose the driver!</option>
+                @foreach($drivers as $driver)
+                    <option
+                        value="{{ $driver->id }}"
+                        @if ($driver->id == old('driver_id', $car->driver->id ?? false)) selected @endif>{{ $driver->name }}</option>
+                @endforeach
+            </select>
+            @error('driver_id')
+                <p class="invalid-feedback">{{ $errors->first('driver_id') }}</p>
+            @enderror
+        </div>
+        <div class="mb-3">
             <label for="car-description" class="form-label">Description</label>
 
             <textarea
