@@ -1,6 +1,16 @@
 {
   "dependencies": {
+    "bootstrap": "^5.3.2",
     "php": "^1.0.2",
     "stripe": "^14.12.0"
-  }
+  },
+  "name": "project2",
+  "description": "Šis repo paredzēts tiem, kas zina, kas ir PD2.",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
 }
