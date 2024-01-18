@@ -11,7 +11,7 @@
                 <th>Driver</th>
                 <th>Car Number</th>
                 <th>Year</th>
-                <th>Price</th>
+                <th>Entry Fee</th>
                 <th>Published</th>
                 <th>&nbsp;</th>
             </tr>

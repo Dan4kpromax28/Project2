@@ -5,16 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     
+
+    <link href="{{ asset('css/main.css')}}" rel="stylesheet" type="text/css" />
     <title>Project 2 - {{ $title }}</title>
 </head>
-<body>
+
+
+
+<body class="d-flex flex-column min-vh-100">
     <nav class="navbar bg-primary mb-3" data-bs-theme="dark">
         <header class="container">
             <nav class="navbar navbar-expand-md bg-primary mb-3" data-bs-theme="dark">
                 <div class="container">
-                    <span class="navbar-brand mb-0 h1">Project 2</span>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-data-bs-target="#navbarNav">
+                    <span class="navbar-brand mb-0 h1">Formula 1Fan</span>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                         <span class="navbar-toggler-icon"></span>
                     </button>
                     <div class="collapse navbar-collapse" id="navbarNav">
@@ -56,7 +60,7 @@ data-bs-target="#navbarNav">
             </div>
         </div>
     </main>
-    <footer class="text-bg-dark mt-3">
+    <footer class="text-bg-dark mt-3 mt-auto"">
         <div class="container">
             <div class="row py-5"> 
                 <div class="col">
@@ -66,6 +70,6 @@ data-bs-target="#navbarNav">
         </div>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-    <script src="/js/admin.js"></script>
+    <script src="{{ asset('js/admin.js')}}"></script>
 </body>
 </html>
