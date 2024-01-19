@@ -19,4 +19,17 @@ class Car extends Model
     public function driver(){
         return $this->belongsTo(Driver::class);
     }
+
+    public function jsonSerialize(): mixed{
+        return [
+            'id' => intval($this->id),
+            'name' => $this->name,
+            'description' => $this->description,
+            'author' => $this->author->name,
+            'driver' => ($this->driver ? $this->driver->name : ''),
+            'price' => number_format($this->price, 2),
+            'year' => intval($this->year),
+            'image' => asset('images/' . $this->image),
+            ];
+    }
 }

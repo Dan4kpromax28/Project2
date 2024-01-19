@@ -6,6 +6,7 @@ use App\Http\Controllers\AuthorController;
 use App\Http\Controllers\CarController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DriverController;
+use App\Http\Controllers\DataController;
 
 
 
@@ -35,4 +36,12 @@ Route::post('/drivers/put', [DriverController::class, 'put']);
 Route::get('/drivers/update/{driver}', [DriverController::class, 'update']);
 Route::post('/drivers/patch/{driver}', [DriverController::class, 'patch']);
 Route::post('/drivers/delete/{driver}', [DriverController::class, 'delete']);
+
+// Data routes
+Route::prefix('data')->group(function () {
+    Route::get('/get-top-cars', [DataController::class, 'getTopCars']);
+    Route::get('/get-car/{car}', [DataController::class, 'getCar']);
+    Route::get('/get-related-cars/{car}', [DataController::class, 'getRelatedCars']);
+   });
+   
 

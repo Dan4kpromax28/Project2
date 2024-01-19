@@ -21,7 +21,7 @@
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                         <span class="navbar-toggler-icon"></span>
                     </button>
-                    <div class="collapse navbar-collapse" id="navbarNav">
+                    <div class="collapse navbar-collapse " id="navbarNav">
                         <ul class="navbar-nav">
                             <li class="nav-item">
                                 <a class="nav-link" href="/">Home</a>
@@ -36,11 +36,11 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="/cars">Cars</a>
                             </li>
-                            <li>
+                            <li class="login" > 
                                 <a class="nav-link" href="/logout">Log out</a>
                             </li>
                         @else
-                            <li>
+                            <li class="login" >
                                 <a class="nav-link" href="/login">Log in</a>
                             </li>
                         @endif
@@ -51,20 +51,29 @@
 
         </header>
     </nav>
-
-    
+   
     <main class="container">
         <div class="row">
             <div class="col">
-                @yield('content')
+                
+                    @yield('content')
+                
+                
+                
+                
             </div>
         </div>
     </main>
-    <footer class="text-bg-dark mt-3 mt-auto"">
+    <footer class="text-bg-dark mt-3 mt-auto">
         <div class="container">
             <div class="row py-5"> 
                 <div class="col">
-                Daniels Balika, 2024
+                Daniels Balika,<br>
+                <?php
+                
+                echo "Today is " . date("Y.m.d") ." ". date("l"). "<br>";
+                
+                ?>
                 </div>
             </div>
         </div>

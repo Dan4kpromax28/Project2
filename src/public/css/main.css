@@ -21,6 +21,11 @@ body {
 
 .btn-primary{
     --bs-btn-border-color: black;
+    --bs-btn-active-bg: #6b1b14;
+    --bs-btn-active-border-color: #FF1801;
+    --bs-btn-hover-bg: #FF1801;
+    --bs-btn-hover-border-color: #FF1801;
+    --bs-btn-active-color: black;
 }
 .h1{
     color:black;
@@ -42,6 +47,7 @@ body {
     --bs-btn-disabled-bg: transparent;
     --bs-btn-disabled-border-color: #FF1801;
     --bs-gradient: none;
+   
 }
 
 .btn-outline-danger {
@@ -61,4 +67,11 @@ body {
     --bs-btn-disabled-bg: transparent;
     --bs-btn-disabled-border-color: #f58020;
     --bs-gradient: none;
+    
 }
+.row>* {
+    padding-bottom: calc(var(--bs-gutter-x) * .5);
+}
+
+
+

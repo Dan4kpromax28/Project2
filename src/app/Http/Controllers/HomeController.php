@@ -8,10 +8,9 @@ class HomeController extends Controller
 {
 
     
+    
+
     public function index(){
-        return view(
-            'home.index',
-            ['title' => 'Homepage']
-        );
+        return view('public', ['title' => 's22_balidani']);
     }
 }
