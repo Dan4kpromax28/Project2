@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Word Guess Game</title>
+    <style>
+        body {
+            font-family: sans-serif;
+        }
+
+        .container {
+            width: 400px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .word {
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+
+        .image {
+            width: 100px;
+            height: 100px;
+            margin-bottom: 10px;
+        }
+
+        input[type="text"] {
+            width: 200px;
+        }
+
+        #score {
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Image Word Guess Game</h1>
+
+        <p class="word"></p>
+
+        <img class="image" src="" alt="">
+
+        <input type="text" id="guess-input" placeholder="Guess the word">
+        <button onclick="guessWord()">Guess</button>
+
+        <p id="score">Score: 0</p>
+    </div>
+
+    <script>
+        const words = ['apple', 'banana', 'orange', 'grape', 'strawberry'];
+        const wordImageMap = {
+            'apple': './apple.jpg',
+            'banana': './banana.jpg',
+            'orange': './orange.jpg',
+            'grape': './grape.jpg',
+            'strawberry': './strawberry.jpg'
+        };
+
+        let currentWord = randomWord();
+        let wordParts = [];
+        let score = 0;
+
+        function displayWord() {
+            const wordElement = document.querySelector('.word');
+            const word = '';
+
+            for (const char of currentWord) {
+                if (wordParts.includes(char)) {
+                    word += char;
+                } else {
+                    word += '-';
+                }
+            }
+
+            wordElement.textContent = word;
+        }
+
+        function displayImage() {
+            const imageElement = document.querySelector('.image');
+            const imageUrl = wordImageMap[currentWord];
+
+            imageElement.src = imageUrl;
+        }
+
+        function guessWord() {
+            const guessInput = document.getElementById('guess-input');
+            const guess = guessInput.value.toLowerCase();
+            guessInput.value = '';
+
+            if (guess === currentWord) {
+                alert(`Congratulations! You guessed the team correctly: ${currentWord}`);
+                score += 10;
+                updateScore();
+                playAgain();
+            } else {
+                alert(`Sorry, that was not the correct team. Try again.`);
+                score -= 1;
+                updateScore();
+                checkGuess(guess);
+            }
+        }
+
+        function randomWord() {
+            return words[Math.floor(Math.random() * words.length)];
+        }
+
+        function checkGuess(guess) {
+            if (!wordParts.includes(guess)) {
+                wordParts.push(guess);
+            }
+
+            displayWord();
+        }
+
+        function updateScore() {
+            const scoreElement = document.getElementById('score');
+            scoreElement.textContent = `Score: ${score}`;
+        }
+
+        function playAgain() {
+            currentWord = randomWord();
+            wordParts = [];
+            score = 0;
+            displayWord();
+            displayImage();
+        }
+
+        displayWord();
+        displayImage();
+    </script>
+</body>
+</html>

@@ -73,7 +73,7 @@ function renderIndex(cars) {
 
         // create row
         let row = document.createElement('div');
-        row.classList = 'row mb-5 pt-5 pb-5 bg-light';
+        row.classList = 'row mb-5 pt-5 pb-5 bg-light border border-dark border-3';
 
         // create info div
         let info = document.createElement('div');
@@ -81,6 +81,11 @@ function renderIndex(cars) {
 
         // create info items
             // title
+            let name = document.createElement('p');
+            name.classList = 'display-4 boldF';
+            name.textContent = car.author;
+            info.appendChild(name);
+
             let title = document.createElement('p');
             title.classList = 'display-4';
             title.textContent = car.name;
@@ -96,12 +101,13 @@ function renderIndex(cars) {
 
             // "See more" button
             let btn = document.createElement('a');
-            btn.classList = 'btn btn-success see-more ' + (i % 2 == 0 ? 'float-right' : 'float-left');
+            btn.classList = 'btn btn-success border border-dark see-more ' + (i % 2 == 0 ? 'float-right' : 'float-left');
             btn.textContent = 'See more';
             btn.href = '#';
             btn.dataset.carId = car.id;
             info.appendChild(btn);
 
+            
         // add info div to row
         row.appendChild(info);
 
@@ -137,6 +143,11 @@ function renderSingle(car) {
 
     // create info items
         // title
+        let author = document.createElement('h1');
+        author.classList = 'display-3 boldF';
+        author.textContent = car.author;
+        info.appendChild(author);
+
         let title = document.createElement('h1');
         title.classList = 'display-3';
         title.textContent = car.name;
@@ -165,10 +176,20 @@ function renderSingle(car) {
             yearValue.textContent = car.year;
             dl.appendChild(yearValue);
 
+            let driverLabelId = document.createElement('dt');
+            driverLabelId.classList = 'col-sm-3';
+            driverLabelId.textContent = 'Driver number';
+            dl.appendChild(driverLabelId);
+
+            let driverValueId = document.createElement('dd');
+            driverValueId.classList = 'col-sm-9';
+            driverValueId.textContent = car.driver_id;
+            dl.appendChild(driverValueId);
+
             // price
             let priceLabel = document.createElement('dt');
             priceLabel.classList = 'col-sm-3';
-            priceLabel.textContent = 'Price';
+            priceLabel.textContent = 'Enter fee';
             dl.appendChild(priceLabel);
 
             let priceValue = document.createElement('dd');
@@ -177,16 +198,16 @@ function renderSingle(car) {
             dl.appendChild(priceValue);
 
             // driver
-            if (car.genre.length > 0) {
-                let genreLabel = document.createElement('dt');
-                genreLabel.classList = 'col-sm-3';
-                genreLabel.textContent = 'Genre';
-                dl.appendChild(genreLabel);
+            if (car.driver.length > 0) {
+                let driverLabel = document.createElement('dt');
+                driverLabel.classList = 'col-sm-3';
+                driverLabel.textContent = 'Driver';
+                dl.appendChild(driverLabel);
 
-                let genreValue = document.createElement('dd');
-                genreValue.classList = 'col-sm-9';
-                genreValue.textContent = car.genre;
-                dl.appendChild(genreValue);
+                let driverValue = document.createElement('dd');
+                driverValue.classList = 'col-sm-9';
+                driverValue.textContent = car.driver;
+                dl.appendChild(driverValue);
             }
 
         info.appendChild(dl);
@@ -232,7 +253,7 @@ function renderRelated(cars) {
 
     // create title
     let title = document.createElement('h2');
-    title.classList = 'display-4';
+    title.classList = 'display-4 boldF';
     title.textContent = 'Similar cars';
 
     // add elements to document
@@ -266,6 +287,11 @@ function renderRelated(cars) {
         cardBody.classList = 'card-body';
 
         // create card title
+        let cardName = document.createElement('h4');
+        cardName.classList = 'card-title boldF';
+        cardName.textContent = car.author;
+        cardBody.appendChild(cardName);
+
         let cardTitle = document.createElement('h5');
         cardTitle.classList = 'card-title';
         cardTitle.textContent = car.name;
@@ -273,7 +299,7 @@ function renderRelated(cars) {
 
         // create card link
         let btn = document.createElement('a');
-        btn.classList = 'btn btn-success see-more';
+        btn.classList = 'btn btn-success see-more border border-dark';
         btn.textContent = 'See more';
         btn.href = '#';
         btn.dataset.carId = car.id;

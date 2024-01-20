@@ -11,18 +11,24 @@
         integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ"
         crossorigin="anonymous"
     >
+    <link href="{{ asset('css/main.css')}}" rel="stylesheet" type="text/css" />
     </head>
  <body>
-    <header class="navbar navbar-dark bg-dark mb-5">
-        <div class="container">
-            <span class="navbar-brand mb-0 h1">{{ $title }}</span>
-        </div>
+ <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+      <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
+        <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
+        <span class="fs-4">{{ $title }}</span>
+      </a>
+
+      
     </header>
     <main class="container">
         <div id="root"></div>
     </main>
-    <footer class="mt-5 py-5">
-        <div class="col">
+    <footer class="text-bg-dark mt-3 mt-auto">
+        <div class="container">
+            <div class="row py-5"> 
+                <div class="col">
                 Daniels Balika,<br>
                 <?php
                 
@@ -30,7 +36,9 @@
                 
                 ?>
                 </div>
- </footer>
+            </div>
+        </div>
+    </footer>
  <script src="{{ asset('/js/app.js') }}"></script>
  </body>
 </html>

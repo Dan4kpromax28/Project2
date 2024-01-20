@@ -7,6 +7,10 @@
     font-family: F1Bold;
     src: url(fonts/Formula1-Bold_web.ttf);
 }
+@font-face {
+    font-family: F1Wide;
+    src: url(fonts/Formula1-Wide.ttf);
+}
 body {
     font-family: 'F1';
     
@@ -73,5 +77,34 @@ body {
     padding-bottom: calc(var(--bs-gutter-x) * .5);
 }
 
+.boldF{
+    font-family: 'F1Bold';
+}
+.wideF{
+    font-family:'F1Wide';
+}
 
+.py-3{
+    background-color: #FF1801 !important;
+}
+.fs-4 {
+    font-family: 'F1Bold';
+}
+
+.btn-success {
+    --bs-btn-color: #fff;
+    --bs-btn-bg: #FF1801;
+    --bs-btn-border-color: #FF1801;
+    --bs-btn-hover-color: #fff;
+    --bs-btn-hover-bg: #FF1801;
+    --bs-btn-hover-border-color: #FF1801;
+    --bs-btn-focus-shadow-rgb: 60,153,110;
+    --bs-btn-active-color: #fff;
+    --bs-btn-active-bg: #6b1b14;
+    --bs-btn-active-border-color: #6b1b14;
+    --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+    --bs-btn-disabled-color: #fff;
+    --bs-btn-disabled-bg: #6b1b14;
+    --bs-btn-disabled-border-color: #6b1b14;
+}
 
