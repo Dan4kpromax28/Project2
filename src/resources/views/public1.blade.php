@@ -12,6 +12,7 @@
         crossorigin="anonymous"
     >
     <link href="{{ asset('css/main.css')}}" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="css/style.css">
     </head>
  <body class="d-flex flex-column min-vh-100">
  <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
@@ -21,14 +22,27 @@
       </a>
       <nav class="nav justify-content-center">
         <a class="nav-link active" aria-current="page" href="/">Home</a>
-        <a class="nav-link active" aria-current="page" href="/game">Game</a>
+        <a class="nav-link active" aria-current="page" href="#">Game</a>
         </nav>
     </header>
-   
+    <div class="center">
+        <div class="wrapper">
+        <h1>Guess the F1 Team</h1>
+        <div class="content">
+            <input type="text" class="typing-input" maxlength="1">
+            <div class="inputs"></div>
+            <div class="details">
+            <p class="hint">Hint: <span></span></p>
+            <p class="guess-left">Remaining guesses: <span></span></p>
+            <p class="wrong-letter">Wrong letters: <span></span></p>
+            </div>
+            <button class="reset-btn">Reset Game</button>
+        </div>
+        </div>
+    </div>
     
-    <main class="container">
-        <div id="root"></div>
-    </main>
+    
+    
     <footer class="text-bg-dark mt-3 mt-auto">
         <div class="container">
             <div class="row py-5"> 
@@ -43,6 +57,7 @@
             </div>
         </div>
     </footer>
- <script src="{{ asset('/js/app.js') }}"></script>
+    <script src="js/words.js"></script>
+    <script src="js/script.js"></script>
  </body>
 </html>

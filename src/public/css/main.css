@@ -15,6 +15,9 @@ body {
     font-family: 'F1';
     
 }
+.nav-link {
+    color: black !important;
+}
 .bg-primary {
     background-color: 	#FF1801 !important;
 }
@@ -107,4 +110,5 @@ body {
     --bs-btn-disabled-bg: #6b1b14;
     --bs-btn-disabled-border-color: #6b1b14;
 }
+
 

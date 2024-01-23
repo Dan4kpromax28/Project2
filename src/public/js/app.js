@@ -4,11 +4,64 @@
 // define variable that will hold content DOM element
 let root = null;
 
+function sortCarsTeamsAlphabetically(cars) {
+    return cars.sort((a, b) => a.author.localeCompare(b.author));
+}
 
+function sortCarsByDriverId(cars) {
+    return cars.sort((a, b) => a.driver_id - b.driver_id);
+}
+
+function sortByDriverName(cars) {
+    return cars.sort((a, b) => a.driver.localeCompare(b.driver));
+}
+
+function sortByCar(cars) {
+    return cars.sort((a, b) => a.name.localeCompare(b.name));
+}
 
 // functions that load data, set up page content, handle user actions
 
 // setup index page
+
+function sortAndRender(selectedOption, cars) {
+    let sortedIndices;
+    if (selectedOption === 'alphabetical') {
+        
+        sortedIndices = sortCarsTeamsAlphabetically(cars);
+    } else if (selectedOption === 'id') {
+        
+        sortedIndices = sortCarsByDriverId(cars);
+    } else if (selectedOption === 'name') {
+        
+        sortedIndices = sortByDriverName(cars);
+        
+    } else if (selectedOption === 'carName') {
+        
+        sortedIndices = sortByCar(cars);
+        
+    }
+    
+    placeLoader();
+
+    // load JSON data
+    fetch('http://localhost/data/get-top-cars')
+        .then(
+            response => response.json()
+        )
+        .then(cars => {
+            // on success remove spinner and render index page
+            removeLoader();
+            renderIndex(sortedIndices);
+        })
+        .then(function(){
+            // setup link handling
+            setupLinks();
+        })
+    ;
+    
+}
+
 function setupIndex() {
 
     placeLoader();
@@ -66,7 +119,51 @@ function setupSingle(id) {
 
 // render index page content
 function renderIndex(cars) {
+    
+    
 
+    
+    let sortDropdown = document.createElement('select');
+    sortDropdown.classList = 'form-select';
+    sortDropdown.style.width = '300px';
+    sortDropdown.style.right = '20px'; // Adjust the position to be on the right side
+    sortDropdown.style.marginBottom = '20px';
+    sortDropdown.addEventListener('change', (event) => {
+        const selectedOption = event.target.value;
+        sortAndRender(selectedOption, cars);
+    });
+    let noneOption = document.createElement('option');
+    noneOption.value = 'none';
+    noneOption.textContent = 'Sorting options';
+    sortDropdown.appendChild(noneOption);
+
+    // Option for alphabetical sorting
+    let alphabeticalOption = document.createElement('option');
+    alphabeticalOption.value = 'alphabetical';
+    alphabeticalOption.textContent = 'Sort by team name';
+    sortDropdown.appendChild(alphabeticalOption);
+
+    // Option for ID sorting
+    let idOption = document.createElement('option');
+    idOption.value = 'id';
+    idOption.textContent = 'Sort by driver number';
+    sortDropdown.appendChild(idOption);
+
+    // Option for name sorting
+    let nameOption = document.createElement('option');
+    nameOption.value = 'name';
+    nameOption.textContent = 'Sort by driver name';
+    sortDropdown.appendChild(nameOption);
+
+    let carOption = document.createElement('option');
+    carOption.value = 'carName';
+    carOption.textContent = 'Sort by car name';
+    sortDropdown.appendChild(carOption);
+
+    // Add the dropdown list to the container
+    root.appendChild(sortDropdown);
+    // Get the dropdown list and button
+  
     let i = 0;
     for (const car of cars) {
         i++;
@@ -82,7 +179,7 @@ function renderIndex(cars) {
         // create info items
             // title
             let name = document.createElement('p');
-            name.classList = 'display-4 boldF';
+            name.classList = 'display-1 boldF';
             name.textContent = car.author;
             info.appendChild(name);
 
@@ -90,6 +187,11 @@ function renderIndex(cars) {
             title.classList = 'display-4';
             title.textContent = car.name;
             info.appendChild(title);
+
+            let number = document.createElement('p');
+            number.classList = 'display-5';
+            number.textContent =  car.driver_id;
+            info.appendChild(number);
 
             // description
             if (car.description && car.description.length > 0) {
@@ -127,12 +229,13 @@ function renderIndex(cars) {
 
         // add row to document
         root.appendChild(row);
+        
     }
 }
 
 // render main panel of single car page
 function renderSingle(car) {
-
+    
     // create row
     let row = document.createElement('div');
     row.classList = 'row mb-5';
@@ -238,6 +341,7 @@ function renderSingle(car) {
 
     // add row to document
     root.appendChild(row);
+    
 }
 
 // render related cars panel of single car page
@@ -313,6 +417,7 @@ function renderRelated(cars) {
 
     // add row to document
     root.appendChild(row);
+    
 }
 
 // set up link functionality
@@ -375,3 +480,5 @@ document.addEventListener('DOMContentLoaded', function(){
     setupIndex();
 
 });
+
+

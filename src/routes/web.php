@@ -11,6 +11,7 @@ use App\Http\Controllers\DataController;
 
 
 Route::get('/', [HomeController::class, 'index']);
+Route::get('/game', [HomeController::class, 'index1']);
 
 Route::get('/authors', [AuthorController::class, 'list']);
 Route::get('/authors/create', [AuthorController::class, 'create']);
@@ -43,5 +44,5 @@ Route::prefix('data')->group(function () {
     Route::get('/get-car/{car}', [DataController::class, 'getCar']);
     Route::get('/get-related-cars/{car}', [DataController::class, 'getRelatedCars']);
    });
-   
+
 

@@ -12,7 +12,6 @@ class DataController extends Controller
     public function getTopCars(){
         $cars = Car::where('display', true)
             ->inRandomOrder()
-            ->take(3)
             ->get();
         return $cars;
 }
@@ -35,5 +34,11 @@ class DataController extends Controller
         return $cars;
 }
 
+    public function getGame(){
+        $cars = Car::where('display', true)
+            ->inRandomOrder()
+            ->get();
+        return $cars;
+    }
 
 }
