@@ -42,7 +42,7 @@
             @enderror
         </div>
         <div class="mb-3">
-            <label for="car-driver" class="form-label">Author</label>
+            <label for="car-driver" class="form-label">Driver</label>
             <select
                 id="car-driver"
                 name="driver_id"
@@ -85,7 +85,7 @@
             @enderror
         </div>
         <div class="mb-3">
-            <label for="car-price" class="form-label">Price</label>
+            <label for="car-price" class="form-label">Fee</label>
             <input
                 type="number" min="0.00" step="0.01" lang="en"
                 id="car-price"
