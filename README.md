@@ -20,9 +20,9 @@
 
 ## DB rekvizīti
 - Server: `pd2-mysql`
-- Username: `pd2admin`
-- Password: `pd2pass`
+- Username: `root`
+- Password: `root`
 
 ---
 
-K. Immers, VeA, 2023
+Daniels Balika, VeA, 2023
